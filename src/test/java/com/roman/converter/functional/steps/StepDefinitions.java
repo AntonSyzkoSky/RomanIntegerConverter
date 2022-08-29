@@ -22,13 +22,21 @@ public class StepDefinitions {
     }
 
     @Given("I convert (.+) to integer$")
-    public void iConvertRomanoInteger(String roman) {
-        scenarioState.setIntFromRoman(scenarioState.getConverter().convertRomanToInteger(roman));
+    public void convertRomanToInteger(String roman) {
+        try {
+            scenarioState.setIntFromRoman( scenarioState.getConverter().convertRomanToInteger(roman));
+        }catch (Exception e){
+            scenarioState.setErrorMessage(e.getMessage());
+        }
     }
 
     @Given("I convert {int} to roman")
     public void convertIntToRoman(Integer intArg) {
-        scenarioState.setRomanFromInt(scenarioState.getConverter().convertIntegerToRoman(intArg));
+        try {
+            scenarioState.setRomanFromInt(scenarioState.getConverter().convertIntegerToRoman(intArg));
+        }catch (Exception e){
+            scenarioState.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("I am getting {int} as result")
