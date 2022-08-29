@@ -22,4 +22,17 @@ public class ConversionDataValidatorTest {
         assertThat(ex.getMessage())
             .isEqualTo("Zero cannot be converted to roman numeral");
     }
+
+    @Test
+    public void validateRomanToIntThrowsNumberFormatExceptionTest() {
+
+        NumberFormatException ex =
+            assertThrows(
+                NumberFormatException.class,
+                () -> underTest.validateRomanForIntConversion("45")
+            );
+
+        assertThat(ex.getMessage())
+            .isEqualTo("Roman numbers are comprised of alphabetic characters only");
+    }
 }
