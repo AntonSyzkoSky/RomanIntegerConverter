@@ -1,5 +1,5 @@
 Feature: Roman Integer Converter
-  As a user I want to get a clear error message when providing invalid input for conversion
+         As a user I want to get a clear error message when providing invalid input for conversion
 
   Scenario Outline: converting zero integer to roman number I'm getting an error
     Given I convert <integer> to roman
@@ -18,3 +18,5 @@ Feature: Roman Integer Converter
       | XXW   | Provided letter W is not used in roman numbers            |
       | 45    | Roman numbers are comprised of alphabetic characters only |
       | %£@   | Roman numbers are comprised of alphabetic characters only |
+      | empty | An empty string does not define a Roman numeral           |
+      | null  | Missing number for conversion                             |

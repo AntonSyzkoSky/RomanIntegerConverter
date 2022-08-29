@@ -23,6 +23,12 @@ public class StepDefinitions {
 
     @Given("I convert (.+) to integer$")
     public void convertRomanToInteger(String roman) {
+        if(roman.equals("empty")){
+            roman = "";
+        }
+        if(roman.equals("null")){
+            roman = null;
+        }
         try {
             scenarioState.setIntFromRoman( scenarioState.getConverter().convertRomanToInteger(roman));
         }catch (Exception e){
