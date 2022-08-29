@@ -2,7 +2,7 @@ plugins {
     java
 }
 
-group = "com.roman.test"
+group = "com.roman.converter"
 version = "1.0-SNAPSHOT"
 
 dependencies {
