@@ -1,8 +1,12 @@
 package com.roman.converter.service;
 
+import com.roman.converter.validators.ConversionDataValidator;
+
 import java.util.Map;
 
 public class RomanIntegerConverterImpl implements RomanIntegerConverter {
+
+    private final ConversionDataValidator conversionDataValidator;
 
     public final  int[] VALUES_FOR_INT_CONVERSION = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     public final  String[] ROMAN_NUMBERS = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -17,9 +21,14 @@ public class RomanIntegerConverterImpl implements RomanIntegerConverter {
         'M', 1000
     );
 
+    public RomanIntegerConverterImpl(ConversionDataValidator conversionDataValidator) {
+        this.conversionDataValidator = conversionDataValidator;
+    }
+
     @Override
     public String convertIntegerToRoman(Integer number) {
 
+        conversionDataValidator.validateIntForRomanConversion(number);
 
         StringBuilder romanNumber = new StringBuilder();
 
@@ -34,6 +43,8 @@ public class RomanIntegerConverterImpl implements RomanIntegerConverter {
 
     @Override
     public Integer convertRomanToInteger(String romanNumber) {
+        conversionDataValidator.validateRomanForIntConversion(romanNumber);
+
         Integer intResult = 0;
 
         for (int i = 0; i < romanNumber.length(); i++) {

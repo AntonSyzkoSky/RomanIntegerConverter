@@ -2,6 +2,7 @@ package com.roman.converter.functional.steps;
 
 import com.roman.converter.functional.state.ScenarioState;
 import com.roman.converter.service.RomanIntegerConverterImpl;
+import com.roman.converter.validators.ConversionDataValidator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StepDefinitions {
 
     private ScenarioState
-        scenarioState = new ScenarioState(new RomanIntegerConverterImpl());
+        scenarioState = new ScenarioState(new RomanIntegerConverterImpl(new ConversionDataValidator()));
 
     @BeforeEach
     void setUp() {

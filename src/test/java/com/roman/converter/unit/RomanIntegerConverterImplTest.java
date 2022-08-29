@@ -2,7 +2,9 @@ package com.roman.converter.unit;
 
 import com.roman.converter.service.RomanIntegerConverter;
 import com.roman.converter.service.RomanIntegerConverterImpl;
+import com.roman.converter.validators.ConversionDataValidator;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,7 +13,14 @@ import java.util.stream.Stream;
 
 class RomanIntegerConverterImplTest {
 
-    private RomanIntegerConverter underTest = new RomanIntegerConverterImpl();
+    private ConversionDataValidator conversionDataValidator;
+    private RomanIntegerConverter underTest ;
+
+    @BeforeEach
+    void setUp() {
+        conversionDataValidator = new ConversionDataValidator();
+        underTest = new RomanIntegerConverterImpl(conversionDataValidator);
+    }
 
     @ParameterizedTest(name = "converting int number {0} to roman gives {1}")
     @MethodSource
@@ -80,5 +89,4 @@ class RomanIntegerConverterImplTest {
             Arguments.of("MMMCMXCIX", 3999)
         );
     }
-
 }
