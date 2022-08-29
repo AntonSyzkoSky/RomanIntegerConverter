@@ -7,6 +7,7 @@ public class ScenarioState {
     private RomanIntegerConverter converter;
     private  int intFromRoman ;
     private  String romanFromInt ;
+    private String errorMessage;
 
     public ScenarioState(RomanIntegerConverter converter) {
         this.converter = converter;
@@ -30,5 +31,13 @@ public class ScenarioState {
 
     public void setRomanFromInt(String romanFromInt) {
         this.romanFromInt = romanFromInt;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }

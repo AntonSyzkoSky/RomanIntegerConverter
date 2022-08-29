@@ -17,6 +17,7 @@ public class StepDefinitions {
     void setUp() {
         scenarioState.setRomanFromInt("");
         scenarioState.setIntFromRoman(0);
+        scenarioState.setErrorMessage("");
     }
 
     @Given("I convert (.+) to integer$")
@@ -39,4 +40,8 @@ public class StepDefinitions {
         assertThat(roman).isEqualTo(scenarioState.getRomanFromInt());
     }
 
+    @Then("I am getting (.+) error message$")
+    public void assertErrorMessage(String error) {
+        assertThat(error).isEqualTo(scenarioState.getErrorMessage());
+    }
 }
