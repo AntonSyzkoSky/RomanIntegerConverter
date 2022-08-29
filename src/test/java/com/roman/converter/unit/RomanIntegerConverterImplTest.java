@@ -16,4 +16,9 @@ class RomanIntegerConverterImplTest {
         assertThat(underTest.convertIntegerToRoman(1)).isEqualTo("I");
     }
 
+    @Test
+    public void convertRomanToIntBaseCaseTest() {
+        assertThat(underTest.convertRomanToInteger("IX")).isEqualTo(9);
+    }
+
 }
